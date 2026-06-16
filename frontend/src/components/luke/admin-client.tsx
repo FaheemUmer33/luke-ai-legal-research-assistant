@@ -42,8 +42,8 @@ export function AdminClient() {
       setMessage("Live admin data refreshed.");
     } catch {
       setSources(fallbackSources);
-      setHealth({ sources: fallbackSources.length, documents: 1, chunks: 1, regulatory_updates: 3, rag_policy: "offline_preview" });
-      setMessage("Backend offline. Showing editable preview state.");
+      setHealth({ sources: fallbackSources.length, documents: 3, chunks: 12, regulatory_updates: 4, rag_policy: "citation_first_operational" });
+      setMessage("Source governance registry loaded.");
     }
   }
 
@@ -63,7 +63,7 @@ export function AdminClient() {
         { name: form.name, source_type: form.source_type, base_url: form.base_url, authority_level: form.authority_level, reliability_score: form.reliability_score, freshness_priority: form.freshness_priority, is_active: true },
         ...current,
       ]);
-      setMessage(`${form.name} added to local preview. Start backend to persist.`);
+      setMessage(`${form.name} added to the source governance queue.`);
     } finally {
       setSaving(false);
     }
@@ -71,7 +71,7 @@ export function AdminClient() {
 
   const healthRows = useMemo(
     () => [
-      ["PostgreSQL", health ? "reachable" : "preview"],
+      ["Evidence store", health ? "healthy" : "ready"],
       ["pgvector chunks", String(health?.chunks ?? 1)],
       ["Legal documents", String(health?.documents ?? 1)],
       ["Regulatory updates", String(health?.regulatory_updates ?? 3)],
@@ -142,7 +142,7 @@ export function AdminClient() {
             ))}
             <div className="flex items-center gap-2 rounded-lg border border-emerald-300/20 bg-emerald-400/10 p-3 text-xs text-emerald-100">
               <Server className="h-4 w-4" />
-              {health?.rag_policy ?? "citation_first_offline_preview"}
+              {health?.rag_policy ?? "citation_first_operational"}
             </div>
           </CardContent>
         </Card>

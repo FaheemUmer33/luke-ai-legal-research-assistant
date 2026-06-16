@@ -328,6 +328,41 @@ Insufficient verified legal sources
 
 ## Deployment
 
+### Frontend-Only Portfolio Deployment: Vercel
+
+This repository now supports a Vercel-only portfolio mode. The deployed frontend
+uses Next.js route handlers under `frontend/src/app/api` for:
+
+- research Q&A preview
+- citation panel data
+- document upload simulation
+- contract clause analysis preview
+- admin source registry and health metrics
+
+This means you can deploy the portfolio experience without Render, Railway,
+Redis, or a long-running FastAPI host. Keep the `backend/` directory in the repo
+to demonstrate the production architecture, but deploy only the `frontend/`
+folder to Vercel.
+
+Vercel settings:
+
+```text
+Framework Preset: Next.js
+Root Directory: frontend
+Install Command: npm install
+Build Command: npm run build
+```
+
+Environment variables:
+
+```text
+None required for portfolio mode.
+```
+
+Do not set `NEXT_PUBLIC_API_URL` unless you later deploy the FastAPI backend.
+When this variable is empty, the UI calls same-origin Vercel routes such as
+`/api/research/ask`.
+
 ### Frontend: Vercel
 
 Recommended settings:

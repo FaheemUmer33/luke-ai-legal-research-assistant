@@ -1,4 +1,4 @@
-export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "").replace(/\/$/, "");
 
 export type Citation = { document_name: string; section: string; official_url?: string; storage_uri?: string; quote: string };
 export type LegalSource = {

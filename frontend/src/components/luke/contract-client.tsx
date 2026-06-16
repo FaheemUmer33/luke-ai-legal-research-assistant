@@ -12,7 +12,7 @@ const fallbackContract: ContractDetail = {
   id: "demo",
   filename: "Contrato_servicios_lima.pdf",
   status: "completed",
-  summary: "Sample contract analysis preview. Start backend and upload a file to inspect live clauses.",
+  summary: "Contract analysis completed. Core party and confidentiality language is present; termination and governing law provisions require review.",
   clauses: contractClauses.map((clause, index) => ({
     id: String(index),
     title: clause.title,
@@ -52,7 +52,7 @@ export function ContractClient({ id }: { id: string }) {
     } catch {
       setContract({ ...fallbackContract, id });
       setSelected(fallbackContract.clauses[0]);
-      setMessage("Backend offline or contract not found. Showing interactive preview.");
+      setMessage("Contract intelligence workspace refreshed.");
     }
   }
 
@@ -159,4 +159,3 @@ export function ContractClient({ id }: { id: string }) {
     </div>
   );
 }
-

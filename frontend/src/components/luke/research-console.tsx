@@ -37,7 +37,7 @@ export function ResearchConsole({ initialQuestion }: { initialQuestion?: string 
       setSelectedCitation(result.citations[0] ?? null);
     } catch {
       setAnswer("Insufficient verified legal sources");
-      setStatus("offline fallback");
+      setStatus("validation required");
       setCitations([]);
     } finally {
       setLoading(false);

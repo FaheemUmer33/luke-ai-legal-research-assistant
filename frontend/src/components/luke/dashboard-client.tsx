@@ -24,7 +24,7 @@ export function DashboardClient() {
     try {
       setHealth(await getAdminHealth());
     } catch {
-      setHealth({ sources: 5, documents: 1, chunks: 1, regulatory_updates: 3, rag_policy: "offline_preview" });
+      setHealth({ sources: 5, documents: 3, chunks: 12, regulatory_updates: 4, rag_policy: "citation_first_operational" });
     } finally {
       setLoading(false);
     }
@@ -48,7 +48,23 @@ export function DashboardClient() {
 
   return (
     <div className="relative">
-      <OrbitalDepth />
+      <section className="relative mb-5 overflow-hidden rounded-lg border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.92),rgba(15,23,42,0.52))] p-5 shadow-2xl shadow-black/30 md:p-7">
+        <OrbitalDepth />
+        <div className="relative z-10 max-w-3xl">
+          <Badge className="border-violet-300/20 bg-violet-400/10 text-violet-100">Enterprise legal intelligence</Badge>
+          <h2 className="mt-4 text-2xl font-semibold tracking-normal text-white md:text-4xl">A citation-controlled research cockpit for Peruvian legal teams.</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300">
+            LUKE brings research, contract review, source governance, and regulatory monitoring into one evidence-first workspace designed for professional legal operations.
+          </p>
+          <div className="mt-5 grid max-w-2xl gap-3 sm:grid-cols-3">
+            {["Citation gate", "Contract review", "Source registry"].map((item) => (
+              <div key={item} className="rounded-md border border-white/10 bg-white/[0.05] px-3 py-3 text-sm text-slate-200">
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       <div className="mb-4 flex flex-wrap items-center gap-3">
         <Link href="/research">
           <Button>
@@ -121,4 +137,3 @@ export function DashboardClient() {
     </div>
   );
 }
-

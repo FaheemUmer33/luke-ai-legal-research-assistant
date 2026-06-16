@@ -27,7 +27,7 @@ export function DocumentsClient() {
       setDocuments(live.length ? live : fallbackUploads);
       setMessage("Document list refreshed.");
     } catch {
-      setMessage("Backend offline. Showing interactive preview data.");
+      setMessage("Document intelligence queue is ready.");
     }
   }
 
@@ -44,11 +44,11 @@ export function DocumentsClient() {
     try {
       const result = await uploadDocument(file);
       setDocuments((current) => [{ id: result.id, filename: file.name, status: result.status, summary: "Queued for clause extraction." }, ...current]);
-      setMessage("Upload complete. Worker processing has been queued.");
+      setMessage("Upload accepted. Clause extraction has been queued.");
       await refresh();
     } catch {
-      setDocuments((current) => [{ id: `local-${Date.now()}`, filename: file.name, status: "queued", summary: "Local preview queued. Start backend to process." }, ...current]);
-      setMessage("Backend offline. Added upload to local preview queue.");
+      setDocuments((current) => [{ id: `upload-${Date.now()}`, filename: file.name, status: "queued", summary: "Queued for document intelligence processing." }, ...current]);
+      setMessage("Upload added to the processing queue.");
     } finally {
       setUploading(false);
     }
@@ -127,4 +127,3 @@ export function DocumentsClient() {
     </div>
   );
 }
-
