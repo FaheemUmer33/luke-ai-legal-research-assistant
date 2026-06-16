@@ -194,6 +194,7 @@ Update `.env` if needed:
 ```env
 DATABASE_URL=postgresql+psycopg://luke:luke@localhost:5432/luke
 SYNC_DATABASE_URL=postgresql://luke:luke@localhost:5432/luke
+SUPABASE_POOLER_URL=
 REDIS_URL=redis://localhost:6379/0
 JWT_SECRET=replace-with-a-strong-secret
 AI_PROVIDER=openai
@@ -203,6 +204,11 @@ STORAGE_ROOT=./storage
 FRONTEND_ORIGIN=http://localhost:3000
 NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
+
+For Supabase, the direct database host can be IPv6-only. If your local network
+cannot reach it, copy the **Session Pooler** connection string from Supabase and
+paste it into `SUPABASE_POOLER_URL`. The backend will prefer that URL for app
+connections.
 
 ### 3. Install frontend dependencies
 
@@ -369,6 +375,7 @@ Production environment variables:
 ```env
 DATABASE_URL=
 SYNC_DATABASE_URL=
+SUPABASE_POOLER_URL=
 REDIS_URL=
 JWT_SECRET=
 JWT_ISSUER=luke-ai
@@ -403,4 +410,3 @@ python3 -m compileall backend/app scripts
 ## License
 
 This project is provided for portfolio and educational use. Add a formal license before public distribution.
-

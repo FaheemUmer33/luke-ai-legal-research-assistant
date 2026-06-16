@@ -35,7 +35,7 @@ def ingest_legal_document_task(document_id: str, path: str | None = None) -> Non
             section = LegalSection(document_id=doc.id, section_label=f"Seccion {index}", title=None, body=body)
             db.add(section)
             db.flush()
-            chunk = DocumentChunk(section_id=section.id, chunk_index=0, content=body[:3000], embedding=ai.embed(body[:3000]), metadata={})
+            chunk = DocumentChunk(section_id=section.id, chunk_index=0, content=body[:3000], embedding=ai.embed(body[:3000]), metadata_={})
             db.add(chunk)
         doc.status = ProcessingStatus.completed
         db.commit()
@@ -44,4 +44,3 @@ def ingest_legal_document_task(document_id: str, path: str | None = None) -> Non
 @celery_app.task
 def check_regulatory_updates_task() -> dict:
     return {"status": "scheduled", "message": "Connect official source crawlers for El Peruano, SPIJ, ministries, and agencies."}
-

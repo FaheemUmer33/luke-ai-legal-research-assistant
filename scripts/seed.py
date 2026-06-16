@@ -1,6 +1,14 @@
+import sys
+from pathlib import Path
 from uuid import UUID
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+BACKEND_ROOT = PROJECT_ROOT / "backend"
+if str(BACKEND_ROOT) not in sys.path:
+    sys.path.insert(0, str(BACKEND_ROOT))
+
 from app.core.security import hash_password
+from app.core.config import get_settings
 from app.db.session import SessionLocal
 from app.models.legal import DocumentChunk, LegalDocument, LegalSection, LegalSource, Organization, SourceType, User
 from app.services.ai_provider import AIProvider
@@ -15,6 +23,12 @@ SOURCES = [
 
 
 def main() -> None:
+    settings = get_settings()
+    if "YOUR_" in settings.database_url or "placeholder" in settings.database_url or settings.database_url.strip() == "":
+        raise RuntimeError("DATABASE_URL is missing or still a placeholder in the root .env file.")
+    if settings.jwt_secret.strip() == "" or "replace-" in settings.jwt_secret or "placeholder" in settings.jwt_secret:
+        raise RuntimeError("JWT_SECRET is missing or still a placeholder in the root .env file.")
+
     ai = AIProvider()
     demo_org_id = UUID("00000000-0000-0000-0000-000000000001")
     with SessionLocal() as db:
@@ -52,7 +66,7 @@ def main() -> None:
             section = LegalSection(document_id=doc.id, section_label="Articulo 1351", title="Definicion de contrato", body=body)
             db.add(section)
             db.flush()
-            db.add(DocumentChunk(section_id=section.id, chunk_index=0, content=body, embedding=ai.embed(body), metadata={"seed": True}))
+            db.add(DocumentChunk(section_id=section.id, chunk_index=0, content=body, embedding=ai.embed(body), metadata_={"seed": True}))
         db.commit()
         print("Seeded LUKE demo data. Login: admin@luke.pe / luke-demo")
 
