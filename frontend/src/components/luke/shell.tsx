@@ -14,18 +14,18 @@ export function LukeShell({ children }: { children: React.ReactNode }) {
     <div className="relative min-h-screen overflow-hidden">
       <aside className="fixed inset-y-0 left-0 z-20 hidden w-72 border-r border-white/10 bg-slate-950/60 p-5 backdrop-blur-xl lg:block">
         <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-sky-300/30 bg-sky-400/15">
-            <Scale className="h-5 w-5 text-sky-200" />
+          <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-brand-warm/30 bg-bg-elevated/45">
+            <Scale className="h-5 w-5 text-brand-warm" />
           </div>
           <div>
-            <div className="text-lg font-semibold tracking-wide text-white">LUKE</div>
-            <div className="text-xs text-slate-400">Peruvian legal intelligence</div>
+            <div className="text-lg font-semibold tracking-wide text-white">Law AI Solutions</div>
+            <div className="text-xs text-slate-400">Legal automation systems</div>
           </div>
         </div>
         <nav className="mt-10 space-y-2">
           {nav.map((item) => (
             <Link key={item.href} href={item.href} className="flex items-center gap-3 rounded-md px-3 py-3 text-sm text-slate-300 transition hover:bg-white/[0.07] hover:text-white">
-              <item.icon className="h-4 w-4 text-sky-200" />
+              <item.icon className="h-4 w-4 text-brand-warm" />
               {item.label}
             </Link>
           ))}
@@ -42,11 +42,11 @@ export function LukeShell({ children }: { children: React.ReactNode }) {
         <details className="group">
           <summary className="flex cursor-pointer list-none items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-sky-300/30 bg-sky-400/15">
-                <Scale className="h-5 w-5 text-sky-200" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-brand-warm/30 bg-bg-elevated/45">
+                <Scale className="h-5 w-5 text-brand-warm" />
               </div>
               <div>
-                <div className="text-base font-semibold text-white">LUKE</div>
+                <div className="text-base font-semibold text-white">Law AI Solutions</div>
                 <div className="text-xs text-slate-400">Legal intelligence</div>
               </div>
             </div>
@@ -55,7 +55,7 @@ export function LukeShell({ children }: { children: React.ReactNode }) {
           <nav className="mt-4 grid gap-2">
             {nav.map((item) => (
               <Link key={item.href} href={item.href} className="flex items-center gap-3 rounded-md border border-white/10 bg-white/[0.04] px-3 py-3 text-sm text-slate-200">
-                <item.icon className="h-4 w-4 text-sky-200" />
+                <item.icon className="h-4 w-4 text-brand-warm" />
                 {item.label}
               </Link>
             ))}

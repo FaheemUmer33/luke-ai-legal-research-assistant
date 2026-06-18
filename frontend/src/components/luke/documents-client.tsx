@@ -77,9 +77,9 @@ export function DocumentsClient() {
             }}
             onDragLeave={() => setDragging(false)}
             onDrop={onDrop}
-            className={`flex min-h-72 flex-col items-center justify-center rounded-lg border border-dashed p-6 text-center transition ${dragging ? "border-sky-200 bg-sky-400/20" : "border-sky-300/30 bg-sky-400/10"}`}
+            className={`flex min-h-72 flex-col items-center justify-center rounded-lg border border-dashed p-6 text-center transition ${dragging ? "border-foreground-legal/40 bg-brand-warm/15" : "border-brand-warm/30 bg-bg-surface/35"}`}
           >
-            {uploading ? <Loader2 className="h-10 w-10 animate-spin text-sky-100" /> : <FileUp className="h-10 w-10 text-sky-100" />}
+            {uploading ? <Loader2 className="h-10 w-10 animate-spin text-foreground-legal" /> : <FileUp className="h-10 w-10 text-foreground-legal" />}
             <div className="mt-4 text-sm font-medium text-white">Drop PDF or contract</div>
             <div className="mt-2 max-w-64 text-xs leading-5 text-slate-400">Uploads are stored through the storage abstraction and queued for Celery clause extraction.</div>
             <div className="mt-5 flex flex-wrap justify-center gap-2">
@@ -105,7 +105,7 @@ export function DocumentsClient() {
           {documents.map((upload) => (
             <div key={upload.id} className="flex flex-col gap-3 rounded-lg border border-white/10 bg-white/[0.04] p-4 md:flex-row md:items-center md:justify-between">
               <div className="flex items-center gap-3">
-                {upload.status === "processing" || upload.status === "queued" ? <Loader2 className="h-4 w-4 animate-spin text-sky-200" /> : <ShieldCheck className="h-4 w-4 text-emerald-200" />}
+                {upload.status === "processing" || upload.status === "queued" ? <Loader2 className="h-4 w-4 animate-spin text-brand-warm" /> : <ShieldCheck className="h-4 w-4 text-emerald-200" />}
                 <div>
                   <div className="text-sm font-medium text-white">{upload.filename}</div>
                   <div className="text-xs text-slate-400">{upload.summary || "Awaiting worker summary."}</div>

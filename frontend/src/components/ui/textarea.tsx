@@ -6,10 +6,9 @@ export function Textarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement
     <textarea
       {...props}
       className={cn(
-        "min-h-28 w-full resize-none rounded-md border border-white/10 bg-white/[0.06] p-3 text-sm leading-6 text-white outline-none transition placeholder:text-slate-500 focus:border-sky-300/50 focus:ring-2 focus:ring-sky-400/20",
+        "min-h-28 w-full resize-none rounded-md border border-accent-secondary/20 bg-bg-surface/35 p-3 text-sm leading-6 text-foreground-legal outline-none transition placeholder:text-muted-legal focus:border-brand-warm/50 focus:ring-2 focus:ring-brand-warm/20",
         props.className,
       )}
     />
   );
 }
-

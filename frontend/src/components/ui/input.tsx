@@ -6,10 +6,9 @@ export function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
     <input
       {...props}
       className={cn(
-        "h-10 w-full rounded-md border border-white/10 bg-white/[0.06] px-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-sky-300/50 focus:ring-2 focus:ring-sky-400/20",
+        "h-10 w-full rounded-md border border-accent-secondary/20 bg-bg-surface/35 px-3 text-sm text-foreground-legal outline-none transition placeholder:text-muted-legal focus:border-brand-warm/50 focus:ring-2 focus:ring-brand-warm/20",
         props.className,
       )}
     />
   );
 }
-

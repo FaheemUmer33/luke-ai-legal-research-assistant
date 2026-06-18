@@ -1,6 +1,5 @@
-import { redirect } from "next/navigation";
+import { LawAiHome } from "@/components/law-ai/law-ai-home";
 
 export default function Home() {
-  redirect("/dashboard");
+  return <LawAiHome />;
 }
-

@@ -19,7 +19,7 @@ export async function POST(request: Request) {
 
   return NextResponse.json({
     answer:
-      "Based on the verified sample citation, Peruvian civil law defines a contract as an agreement between two or more parties to create, regulate, modify, or extinguish a patrimonial legal relationship. LUKE only surfaces this answer because the stored sample evidence includes Article 1351 and a traceable source reference.",
+      "Based on the verified sample citation, civil law defines a contract as an agreement between two or more parties to create, regulate, modify, or extinguish a patrimonial legal relationship. The answer is surfaced only because stored sample evidence includes Article 1351 and a traceable source reference.",
     status: "answered",
     citations: [productCitation],
   });

@@ -52,9 +52,9 @@ export function DashboardClient() {
         <OrbitalDepth />
         <div className="relative z-10 max-w-3xl">
           <Badge className="border-violet-300/20 bg-violet-400/10 text-violet-100">Enterprise legal intelligence</Badge>
-          <h2 className="mt-4 text-2xl font-semibold tracking-normal text-white md:text-4xl">A citation-controlled research cockpit for Peruvian legal teams.</h2>
+          <h2 className="mt-4 text-2xl font-semibold tracking-normal text-white md:text-4xl">A citation-controlled research cockpit for modern legal teams.</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300">
-            LUKE brings research, contract review, source governance, and regulatory monitoring into one evidence-first workspace designed for professional legal operations.
+            Law AI Solutions brings research, contract review, source governance, and regulatory monitoring into one evidence-first workspace designed for professional legal operations.
           </p>
           <div className="mt-5 grid max-w-2xl gap-3 sm:grid-cols-3">
             {["Citation gate", "Contract review", "Source registry"].map((item) => (
@@ -82,7 +82,7 @@ export function DashboardClient() {
           <motion.div key={stat.label} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.05 }}>
             <Card>
               <CardContent>
-                <stat.icon className="h-5 w-5 text-sky-200" />
+                <stat.icon className="h-5 w-5 text-brand-warm" />
                 {loading ? <Skeleton className="mt-5 h-9 w-24" /> : <div className="mt-5 text-3xl font-semibold text-white">{stat.value}</div>}
                 <div className="mt-2 text-sm text-slate-300">{stat.label}</div>
                 <div className="mt-3 text-xs text-slate-500">{stat.trend}</div>
@@ -102,9 +102,9 @@ export function DashboardClient() {
           </CardHeader>
           <CardContent className="space-y-3">
             {filteredQuestions.map((question) => (
-              <Link key={question} href={`/research?question=${encodeURIComponent(question)}`} className="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.04] p-4 text-sm text-slate-200 transition hover:border-sky-300/30 hover:bg-sky-400/10">
+              <Link key={question} href={`/research?question=${encodeURIComponent(question)}`} className="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.04] p-4 text-sm text-slate-200 transition hover:border-brand-warm/30 hover:bg-bg-surface/35">
                 <span>{question}</span>
-                <ArrowRight className="h-4 w-4 text-sky-200" />
+                <ArrowRight className="h-4 w-4 text-brand-warm" />
               </Link>
             ))}
             {filteredQuestions.length === 0 && <div className="rounded-lg border border-dashed border-white/15 p-5 text-sm text-slate-400">No questions match that filter.</div>}

@@ -11,14 +11,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const sampleQuestions = [
-  "What is the legal definition of contract under Peruvian civil law?",
+  "What is the legal definition of contract under civil law?",
   "Which verified source should be used before answering labor inspection questions?",
-  "What happens when LUKE has no verified legal source?",
+  "What happens when there is no verified legal source?",
 ];
 
 export function ResearchConsole({ initialQuestion }: { initialQuestion?: string }) {
   const [question, setQuestion] = useState(initialQuestion || sampleQuestions[0]);
-  const [answer, setAnswer] = useState("Ask a question. LUKE will retrieve verified sources before generating any legal answer.");
+  const [answer, setAnswer] = useState("Ask a question. Law AI Solutions will retrieve verified sources before generating any legal answer.");
   const [status, setStatus] = useState("ready");
   const [citations, setCitations] = useState<Citation[]>([]);
   const [selectedCitation, setSelectedCitation] = useState<Citation | null>(null);
@@ -52,7 +52,7 @@ export function ResearchConsole({ initialQuestion }: { initialQuestion?: string 
 
   function reset() {
     setQuestion(sampleQuestions[0]);
-    setAnswer("Ask a question. LUKE will retrieve verified sources before generating any legal answer.");
+    setAnswer("Ask a question. Law AI Solutions will retrieve verified sources before generating any legal answer.");
     setStatus("ready");
     setCitations([]);
     setSelectedCitation(null);
@@ -77,7 +77,7 @@ export function ResearchConsole({ initialQuestion }: { initialQuestion?: string 
           </div>
           <div className="mt-4 flex flex-wrap gap-2">
             {sampleQuestions.map((sample) => (
-              <button key={sample} type="button" onClick={() => setQuestion(sample)} className="rounded-md border border-white/10 bg-white/[0.04] px-3 py-2 text-left text-xs text-slate-300 transition hover:border-sky-300/30 hover:text-white">
+              <button key={sample} type="button" onClick={() => setQuestion(sample)} className="rounded-md border border-white/10 bg-white/[0.04] px-3 py-2 text-left text-xs text-slate-300 transition hover:border-brand-warm/30 hover:text-white">
                 {sample}
               </button>
             ))}
@@ -91,9 +91,9 @@ export function ResearchConsole({ initialQuestion }: { initialQuestion?: string 
               </div>
             ) : (
               <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="rounded-lg border border-white/10 bg-black/20 p-5">
-                <div className="mb-3 flex items-center gap-2 text-sm font-medium text-sky-100">
-                  {status.includes("refused") || status.includes("failed") ? <ShieldAlert className="h-4 w-4 text-amber-200" /> : <Sparkles className="h-4 w-4 text-sky-200" />}
-                  LUKE Response
+                <div className="mb-3 flex items-center gap-2 text-sm font-medium text-foreground-legal">
+                  {status.includes("refused") || status.includes("failed") ? <ShieldAlert className="h-4 w-4 text-amber-200" /> : <Sparkles className="h-4 w-4 text-brand-warm" />}
+                  AI Research Response
                 </div>
                 <p className="whitespace-pre-wrap text-sm leading-7 text-slate-200">{answer}</p>
               </motion.div>
@@ -108,7 +108,7 @@ export function ResearchConsole({ initialQuestion }: { initialQuestion?: string 
               </Button>
               <Button disabled={loading || !question.trim()}>
                 <Send className="h-4 w-4" />
-                Ask LUKE
+                Ask AI
               </Button>
             </div>
           </form>
@@ -125,9 +125,9 @@ export function ResearchConsole({ initialQuestion }: { initialQuestion?: string 
               <div className="rounded-lg border border-dashed border-white/15 p-5 text-sm leading-6 text-slate-400">No validated citations yet.</div>
             ) : (
               citations.map((citation, index) => (
-                <motion.button key={`${citation.document_name}-${citation.section}`} type="button" onClick={() => setSelectedCitation(citation)} initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.07 }} className={`w-full rounded-lg border p-4 text-left transition ${selectedCitation === citation ? "border-sky-200 bg-sky-400/20" : "border-sky-300/20 bg-sky-400/10 hover:bg-sky-400/15"}`}>
+                <motion.button key={`${citation.document_name}-${citation.section}`} type="button" onClick={() => setSelectedCitation(citation)} initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.07 }} className={`w-full rounded-lg border p-4 text-left transition ${selectedCitation === citation ? "border-foreground-legal/40 bg-brand-warm/15" : "border-brand-warm/20 bg-bg-surface/35 hover:bg-bg-elevated/45"}`}>
                   <div className="text-sm font-medium text-white">{citation.document_name}</div>
-                  <div className="mt-1 text-xs text-sky-100">{citation.section}</div>
+                  <div className="mt-1 text-xs text-foreground-legal">{citation.section}</div>
                   <p className="mt-3 line-clamp-5 text-xs leading-5 text-slate-300">{citation.quote}</p>
                   <div className="mt-3 truncate text-xs text-slate-400">{citation.official_url || citation.storage_uri}</div>
                 </motion.button>
@@ -138,7 +138,7 @@ export function ResearchConsole({ initialQuestion }: { initialQuestion?: string 
             <div className="mb-3 flex items-center justify-between">
               <span className="text-slate-200">Source Viewer</span>
               {selectedCitation?.official_url && (
-                <a href={selectedCitation.official_url} target="_blank" rel="noreferrer" className="flex items-center gap-1 text-sky-200 hover:text-white">
+                <a href={selectedCitation.official_url} target="_blank" rel="noreferrer" className="flex items-center gap-1 text-brand-warm hover:text-white">
                   Open
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
@@ -148,7 +148,7 @@ export function ResearchConsole({ initialQuestion }: { initialQuestion?: string 
               <div>
                 <div className="rounded-md border border-white/10 bg-white/[0.04] p-3">
                   <div className="font-medium text-white">{selectedCitation.document_name}</div>
-                  <div className="mt-1 text-sky-100">{selectedCitation.section}</div>
+                  <div className="mt-1 text-foreground-legal">{selectedCitation.section}</div>
                   <p className="mt-3 leading-5 text-slate-300">{selectedCitation.quote}</p>
                 </div>
                 <div className="mt-3 truncate text-slate-500">{selectedCitation.official_url || selectedCitation.storage_uri}</div>

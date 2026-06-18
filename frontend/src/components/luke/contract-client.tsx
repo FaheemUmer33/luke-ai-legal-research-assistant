@@ -103,10 +103,10 @@ export function ContractClient({ id }: { id: string }) {
             {clauses.map((clause) => {
               const Icon = iconFor(clause);
               return (
-                <button key={clause.id || clause.title} type="button" onClick={() => setSelected(clause)} className={`rounded-lg border p-4 text-left transition ${selected === clause ? "border-sky-300/40 bg-sky-400/10" : "border-white/10 bg-white/[0.04] hover:bg-white/[0.07]"}`}>
+                <button key={clause.id || clause.title} type="button" onClick={() => setSelected(clause)} className={`rounded-lg border p-4 text-left transition ${selected === clause ? "border-brand-warm/40 bg-bg-surface/35" : "border-white/10 bg-white/[0.04] hover:bg-white/[0.07]"}`}>
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <Icon className="h-4 w-4 text-sky-200" />
+                      <Icon className="h-4 w-4 text-brand-warm" />
                       <div className="text-sm font-medium text-white">{clause.title}</div>
                     </div>
                     <Badge className={riskClass(clause.risk_level)}>{clause.risk_level}</Badge>
@@ -131,7 +131,7 @@ export function ContractClient({ id }: { id: string }) {
           <CardContent className="space-y-3">
             <div className="rounded-lg border border-white/10 bg-black/20 p-3 text-xs leading-5 text-slate-300">{message}</div>
             {selected ? (
-              <div className="rounded-lg border border-sky-300/20 bg-sky-400/10 p-4">
+              <div className="rounded-lg border border-brand-warm/20 bg-bg-surface/35 p-4">
                 <div className="text-sm font-medium text-white">{selected.title}</div>
                 <p className="mt-3 text-xs leading-5 text-slate-300">{selected.body || selected.risk_reason}</p>
                 {selected.missing_recommendation && <div className="mt-3 rounded-md border border-rose-300/20 bg-rose-400/10 p-3 text-xs text-rose-100">{selected.missing_recommendation}</div>}

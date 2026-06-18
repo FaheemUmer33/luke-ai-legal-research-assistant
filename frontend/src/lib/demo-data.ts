@@ -8,7 +8,7 @@ export const stats = [
 ];
 
 export const recentQuestions = [
-  "What is the legal definition of contract under Peruvian civil law?",
+  "What is the legal definition of contract under civil law?",
   "Which authority governs labor inspection sanctions?",
   "Can a commercial agreement omit termination language?",
 ];
@@ -31,6 +31,5 @@ export const contractClauses = [
   { title: "Parties", risk: "low", detail: "Legal identity appears complete.", icon: Scale },
   { title: "Confidentiality", risk: "medium", detail: "Scope lacks survival period.", icon: FileText },
   { title: "Termination", risk: "high", detail: "Missing cure period and notice mechanics.", icon: AlertTriangle },
-  { title: "Governing Law", risk: "high", detail: "No explicit Peruvian law reference detected.", icon: ShieldCheck },
+  { title: "Governing Law", risk: "high", detail: "No explicit governing law reference detected.", icon: ShieldCheck },
 ];
-

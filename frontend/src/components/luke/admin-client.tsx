@@ -152,7 +152,7 @@ export function AdminClient() {
           </CardHeader>
           <CardContent className="space-y-3 text-xs leading-5 text-slate-400">
             {logs.map((log) => (
-              <button key={log} type="button" onClick={() => setSelectedLog(log)} className={`w-full rounded-md border p-3 text-left transition ${selectedLog === log ? "border-sky-300/30 bg-sky-400/10 text-sky-100" : "border-white/10 bg-white/[0.04] hover:bg-white/[0.07]"}`}>
+              <button key={log} type="button" onClick={() => setSelectedLog(log)} className={`w-full rounded-md border p-3 text-left transition ${selectedLog === log ? "border-brand-warm/30 bg-bg-surface/35 text-foreground-legal" : "border-white/10 bg-white/[0.04] hover:bg-white/[0.07]"}`}>
                 {log}
               </button>
             ))}

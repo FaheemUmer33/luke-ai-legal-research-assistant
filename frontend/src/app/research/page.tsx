@@ -6,7 +6,7 @@ export default async function ResearchPage({ searchParams }: { searchParams: Pro
   const { question } = await searchParams;
   return (
     <LukeShell>
-      <PageHeader eyebrow="Legal Research" title="Ask only what the sources can prove." description="LUKE retrieves Peruvian legal sources, ranks by authority, assembles evidence, then validates citations before showing an answer." />
+      <PageHeader eyebrow="Legal Research" title="Ask only what verified sources can prove." description="The research engine retrieves trusted legal sources, ranks by authority, assembles evidence, then validates citations before showing an answer." />
       <ResearchConsole initialQuestion={question} />
     </LukeShell>
   );
